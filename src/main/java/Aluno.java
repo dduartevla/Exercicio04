@@ -7,6 +7,9 @@ public class Aluno {
     }
 
     public void setNome(String nome) {
+        if (nome.isEmpty()){
+            throw new IllegalArgumentException("Nome vazio!");
+        }
         this.nome = nome;
     }
 
@@ -15,12 +18,19 @@ public class Aluno {
     }
 
     public void setNomeCurso(String nomeCurso) {
+        if (nomeCurso.isEmpty()) {
+            throw new IllegalArgumentException("Nome do Curso Nulo!");
+        }
         this.nomeCurso = nomeCurso;
     }
 
-    public String imprimirDiploma(){
-        String coisaPraImprimir;
+    public String imprimirDiploma(IDiploma diploma){
+        if (diploma==null){
+            throw new NullPointerException("Diploma é nulo.");
+        }
 
-        return coisaPraImprimir;
+        String conteudoDiploma = diploma.formata(this);
+
+        return conteudoDiploma;
     }
 }
